@@ -1,28 +1,44 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <Preloader />
+    <CoffeeHeader />
+    <Banner />
+    <div class="tm-main-section light-gray-bg">
+      <div class="container" id="main">
+        <CoffeeDesc />
+        <CoffeeList />
+        <CakeList />
+        <CartList />
+      </div>
+    </div>
+    <CoffeeFooter />
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import Preloader from "./components/Preloader.vue";
+import CoffeeHeader from "./components/CoffeeHeader.vue";
+import Banner from "./components/Banner.vue";
+import CoffeeDesc from "./components/content/CoffeeDesc.vue";
+import CoffeeList from "./components/content/CoffeeList.vue";
+import CakeList from "./components/content/CakeList.vue";
+import CartList from "./components/content/CartList.vue";
+import CoffeeFooter from "./components/CoffeeFooter.vue";
 
 export default {
-  name: 'app',
+  name: "app",
   components: {
-    HelloWorld
+    Preloader,
+    CoffeeHeader,
+    Banner,
+    CoffeeDesc,
+    CoffeeList,
+    CakeList,
+    CartList,
+    CoffeeFooter
   }
-}
+};
 </script>
 
 <style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
 </style>
