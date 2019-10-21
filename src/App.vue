@@ -6,9 +6,10 @@
     <div class="tm-main-section light-gray-bg">
       <div class="container" id="main">
         <CoffeeDesc />
-        <CoffeeList />
-        <CakeList />
+        <CoffeeList @changePid="chp" />
+        <CakeList @changePid="chp" />
         <CartList />
+        <DescLayer :pid="pid" />
       </div>
     </div>
     <CoffeeFooter />
@@ -24,9 +25,17 @@ import CoffeeList from "./components/content/CoffeeList.vue";
 import CakeList from "./components/content/CakeList.vue";
 import CartList from "./components/content/CartList.vue";
 import CoffeeFooter from "./components/CoffeeFooter.vue";
+import DescLayer from "@/components/content/DescLayer.vue";
 
 export default {
   name: "app",
+  data() {
+    return {
+      layerActive: false,
+      "layerActive-show": false,
+      pid: 0
+    };
+  },
   components: {
     Preloader,
     CoffeeHeader,
@@ -35,7 +44,17 @@ export default {
     CoffeeList,
     CakeList,
     CartList,
+    DescLayer,
     CoffeeFooter
+  },
+  methods: {
+    chp(val) {
+      console.log(val);
+      this.pid = val;
+    }
+  },
+  watch: {
+    pid() {}
   }
 };
 </script>

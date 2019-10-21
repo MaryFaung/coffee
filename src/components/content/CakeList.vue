@@ -9,21 +9,7 @@
         <hr class="tm-hr" />
       </div>
     </div>
-    <div class="col-lg-12 tm-popular-items-container">
-      <!-- show block start -->
-      <div class="detail-area">
-        <div class="row">
-          <div class="full-stretch">
-            <div class="col-lg-6 col-md-12 col-sm-12 flex-center">
-              <img src="img/popular-1.jpg" alt="Popular" class="tm-popular-item-img" />
-            </div>
-            <div class="col-lg-6 col-md-12 col-sm-12 flex-center">wwww</div>
-          </div>
-          <i class="fa fa-times" aria-hidden="true"></i>
-        </div>
-      </div>
-      <!-- show block end -->
-
+    <div :class="[cakeclass]">
       <div class="tm-popular-item">
         <img src="img/popular-1.jpg" alt="Popular" class="tm-popular-item-img" />
         <div class="tm-popular-item-description">
@@ -39,7 +25,7 @@
             <a
               href="javascript:void(0);"
               class="order-now-link tm-handwriting-font"
-              data-id="1"
+              data-id="3"
               @click="showDesc"
             >Order Now</a>
           </div>
@@ -90,21 +76,23 @@ export default {
     return {
       index: 0,
       title: "12aa",
-      items: [{ name: "A" }, { name: "B" }]
+      items: [{ name: "A" }, { name: "B" }],
+      cakeclass: "col-lg-12 tm-popular-items-container"
     };
   },
   methods: {
     showDesc(event) {
       //console.log(event.target.dataset.id);
-      console.log(this.items[event.target.dataset.id - 1].name);
-      const moreContent = document.querySelector(".tm-popular-items-container");
+      //console.log(this.items[event.target.dataset.id - 1].name);
+      this.$emit("changePid", parseInt(event.target.dataset.id));
+      const moreContent = document.querySelector(".detail-area");
 
       moreContent.classList.add("active");
       setTimeout(() => {
         if (moreContent.classList.contains("active")) {
           moreContent.classList.add("active-show");
         }
-      }, 150);
+      }, 0);
     }
   }
 };

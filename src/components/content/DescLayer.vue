@@ -61,7 +61,7 @@ export default {
   },
   methods: {
     closeDesc() {
-      const moreContent = document.querySelector(".tm-popular-items-container");
+      const moreContent = document.querySelector(".detail-area");
       const closebtn = document.querySelector(".detail-area .fa-times");
       moreContent.classList.add("of");
       setTimeout(() => {

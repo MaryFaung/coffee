@@ -9,8 +9,6 @@
       </div>
     </div>
     <div class="col-lg-12 tm-popular-items-container">
-      <DescLayer :pid="pid" />
-
       <div class="tm-popular-item">
         <img src="img/popular-1.jpg" alt="Popular" class="tm-popular-item-img" />
         <div class="tm-popular-item-description">
@@ -73,14 +71,12 @@
   </section>
 </template>
 <script>
-import DescLayer from "@/components/content/DescLayer.vue";
-
 export default {
   name: "CoffeeList",
-  components: { DescLayer },
+
   data: function() {
     return {
-      pid: 0,
+      cid: 0,
       title: "12aa",
       items: [{ name: "A" }, { name: "B" }]
     };
@@ -88,10 +84,11 @@ export default {
   methods: {
     showDesc(event) {
       //console.log(event.target.dataset.id);
-      this.pid = parseInt(event.target.dataset.id);
-      //console.log(this.pid);
-      console.log(this.items[event.target.dataset.id - 1].name);
-      const moreContent = document.querySelector(".tm-popular-items-container");
+      this.cid = parseInt(event.target.dataset.id);
+      this.$emit("changePid", this.cid);
+      //console.log(this.cid);
+      //console.log(parseInt(event.target.dataset.id));
+      const moreContent = document.querySelector(".detail-area");
 
       moreContent.classList.add("active");
       setTimeout(() => {
@@ -99,6 +96,11 @@ export default {
           moreContent.classList.add("active-show");
         }
       }, 150);
+    }
+  },
+  watch: {
+    cid() {
+      //console.log(this.cid);
     }
   }
 };
